@@ -1,0 +1,33 @@
+.NavBarBrand {
+    text-shadow: 1px -2px 8px var(--bs-gray-300); /* #aed2f6;*/
+    text-decoration: dotted!important;
+    text-decoration-line: underline!important;
+    text-decoration-color: var(--bs-gray-300)!important;
+    text-underline-offset: .5rem;
+    font-size: 1.5rem!important;
+    /* font-style: oblique; */
+    color: var(--bs-gray-300)!important;
+    border-top: 3px dotted;
+    border-radius: 50%;
+    padding: 0.8rem!important;
+}
+
+@media (max-device-width: 575px) {
+    .NavBar {
+        height: calc(100vh - 6rem);
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .NavBar > div {
+        margin: 1.5rem 0;
+    }
+    .DropDown > div {
+        background-color: var(--bg-dark);
+        text-align: center;
+    }
+    
+    .DropDown > div > a {
+        color: rgba(255, 255, 255, 0.55);
+    }
+}

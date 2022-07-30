@@ -1,0 +1,55 @@
+.MainDiv {
+    min-height: calc(var(--gen-height) - 19rem);
+    margin-bottom: 2rem;
+}
+
+.OfferImage {
+    box-sizing: border-box;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 60vh;
+    background-color: transparent;
+}
+.NavTab {
+    background-color: var(--bs-dark);
+    margin-top: 0.1rem;
+}
+.NavTab :global(.nav-link) {
+    cursor: pointer;
+    color: #cfe1f0c4 !important;
+    border-color: transparent !important;
+    padding: 1rem 0px;
+}
+
+.NavTab :global(.nav-item:first-of-type) {
+    border-right: 3px solid #cfe1f0c4;
+}
+
+.NavTab :global(.nav-link:hover) {
+    color: #d0e0ee !important;
+    border: none;
+    padding: 1rem 0px;
+}
+
+.NavTab :global(.nav-link.active) {
+    cursor: text;
+    color: #d0e0ee !important;
+    background-color: var(--bs-dark) !important;
+    padding: 1rem 0px;
+    margin: unset;
+}
+
+.OrderDetails {
+    /* width: 80%; */
+    margin: 0 auto;
+    padding: 1rem;
+    max-width: 480px;
+}
+
+@media (min-device-width: 575px) {
+    .NavTab {
+        color: inherit;
+    }
+}

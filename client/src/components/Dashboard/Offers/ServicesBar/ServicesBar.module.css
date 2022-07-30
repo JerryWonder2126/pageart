@@ -1,0 +1,7 @@
+.Select {
+    padding: 1rem !important;
+}
+
+.Select > option {
+    padding: 0.25rem;
+}

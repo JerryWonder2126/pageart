@@ -1,0 +1,14 @@
+.OrderTags {
+    margin-top: 1rem;
+}
+.OrderTags > span {
+    padding: 0.5rem 1rem;
+    background-color: var(--bs-dark);
+    color: var(--bs-gray-200);
+    margin: 0.125rem;
+    border-radius: 2rem;
+    word-break: keep-all;
+    text-align: center;
+    display: inline-flex;
+    font-size: 0.8rem;
+}

@@ -1,0 +1,9 @@
+.MainDiv {
+    margin-bottom: 1rem;
+}
+
+@media (max-device-width: 575px) {
+    .MainDiv {
+        margin: 1rem 0rem;
+    }
+}

@@ -1,0 +1,9 @@
+.AddImageDiv {
+    margin-bottom: 1rem;
+}
+
+.Heading {
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+    padding: 1rem;
+}

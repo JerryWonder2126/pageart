@@ -1,0 +1,39 @@
+.Footer {
+    box-sizing: border-box;
+}
+
+.SocialIconsDiv > a > img {
+    width: 1.5rem;
+    aspect-ratio: 1;
+    margin: 0.5rem;
+}
+
+.ActionButtons {
+    padding: 1rem;
+}
+
+.ActionButtons > button, .ActionButtons > p {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-radius: 0px;
+    font-size: 1rem;
+    color: var(--bs-light);
+    display: inline-flex;
+    padding: 0px 0.5rem;
+}
+
+.ActionButtons > button:hover {
+    text-decoration: underline;
+}
+
+.ActionButtons > p {
+    border-right: 3px solid;
+}
+
+.ActionButtons > button:hover {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    transition: none;
+}

@@ -1,0 +1,19 @@
+.ItemCard {
+    max-width: 768px;
+}
+
+.ItemCard > div {
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+}
+
+.ItemCard > div > div:first-of-type {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 0.5rem;
+}
+
+.ItemCard > div > div > button {
+    margin-right: 0.2rem;
+}

@@ -1,0 +1,20 @@
+.MainDiv {
+    min-height: calc(var(--gen-height) - 18rem);
+}
+
+.Form {
+    border-radius: 20px;
+    border: 2px solid var(--bs-dark);
+    padding: 3rem;
+    margin: 3rem 0px;
+    box-shadow: 2px 2px 4px var(--bs-secondary);
+    width: 90%;
+    max-width: 568px;
+}
+
+@media (max-device-width: 470px) {
+    .Form {
+        padding: 3rem 1rem;
+        width: 100%;
+    }
+}

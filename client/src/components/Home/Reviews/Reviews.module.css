@@ -1,0 +1,34 @@
+.MainDiv {
+    text-align: center;
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+    padding: 4rem 0px !important;
+    margin-bottom: 3rem;
+}
+
+.MainDiv > h2 {
+    margin-bottom: 1rem;
+}
+
+.ReviewCard {
+    border-top-left-radius: 25%;
+    border-bottom-right-radius: 25%;
+    padding: 3rem;
+    text-align: center;
+    color: var(--bs-dark);
+    width: 80vw;
+    margin: 0 auto;
+    max-width: 768px;
+    border-radius: 2rem !important;
+}
+
+.ReviewCard img {
+    width: 2rem;
+    aspect-ratio: 1;
+}
+
+@media (max-device-width: 468px) {
+    .ReviewCard {
+        width: 100%;
+    }
+}

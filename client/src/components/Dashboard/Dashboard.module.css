@@ -1,0 +1,24 @@
+.MainDiv {
+    min-height: var(--gen-height);
+}
+.AdminNav > button {
+    border-radius: unset;
+    padding: 1rem 0px !important;
+    width: 50%;
+    border-color: var(--bs-secondary);
+}
+
+@media (max-device-width: 768px) {
+    .AdminNav > button:first-of-type {
+        border-right: 1.5px solid;
+    }
+}
+
+@media (min-device-width: 769px) {
+    .AdminNav > button {
+        width: 100%;
+    }
+    .AdminNav > button:first-of-type {
+        border-bottom: 1.5px solid;
+    }
+}

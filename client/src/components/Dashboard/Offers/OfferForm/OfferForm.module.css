@@ -1,0 +1,13 @@
+.Form {
+    margin-bottom: 1rem;
+}
+.Form > h5 {
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+    padding: 1rem;
+}
+
+.Form > div > label {
+    text-transform: capitalize;
+    margin-bottom: unset;
+}

@@ -1,0 +1,49 @@
+.ImageCard {
+    display: inline-flex;
+    background-color: rgb(33 37 41 / 58%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 20vw;
+    height: 20vw;
+    max-width: 300px;
+    max-height: 300px;
+    margin-right: 1.8rem;
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 20px;
+}
+
+.ImageCard > button {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(35%, -35%);
+}
+
+.ImageCard > button > img {
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+@media (max-device-width: 575px) {
+    .ImageCard {
+        width: 40vw;
+        height: 40vw;
+        margin-right: 1.5rem;
+    }
+
+    .ImageCard > button {
+        width: 2.5rem;
+        height: 2.5rem;
+        transform: translate(35%, -35%);
+    }
+
+    .ImageCard > button > img {
+        width: 1rem;
+        aspect-ratio: 1;
+    }
+}

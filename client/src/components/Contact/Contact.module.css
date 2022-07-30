@@ -1,0 +1,31 @@
+.SectionContainer {
+    background-color: var(--bs-dark);
+    background-image: url(../../assets/contact.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.MainDiv {
+    min-height: var(--gen-height);
+}
+
+.SectionContainerCol {
+    background-color: var(--transparent-dark);
+    color: var(--bs-light);
+    background-blend-mode: soft-light;
+    box-sizing: content-box;
+    border-radius: 1rem;
+    box-shadow: inset 4px 4px 5px 0px var(--transparent-dark);
+    text-align: center;
+    width: 100%;
+    max-width: 668px;
+    padding: 5rem 0px;
+    margin: 3rem 0;
+}
+
+@media (max-device-width: 990px) {
+    .MainDiv {
+        min-height: calc(var(--gen-height) - 19rem);
+    }   
+}

@@ -1,0 +1,41 @@
+.ItemImage {
+    box-sizing: border-box;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 60vh;
+    background-color: transparent;
+}
+
+.AccordionItem > h2 > button {
+    font-size: 1.2rem;
+    text-transform: capitalize;
+}
+
+.Others {
+    text-transform: capitalize;
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 10rem;
+    border-radius: 20px;
+    padding: 1rem;
+    text-align: center;
+    margin: 0.5rem;
+    box-shadow: 2px 2px 2px var(--bs-dark);
+}
+
+.Others > h5 {
+    font-weight: bold;
+}
+
+.Others > p {
+    margin: unset;
+}
+
+@media (max-device-width: 575px) {
+    .Others {
+        min-width: 5rem;
+        box-sizing: border-box;
+    }
+}

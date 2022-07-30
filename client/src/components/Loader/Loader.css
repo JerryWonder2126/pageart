@@ -1,0 +1,116 @@
+body {
+    --block-height: 8rem;
+    --block-height-after: 4rem;
+    --block-height-before: 6rem;
+}
+.loader-box {
+    height: 1rem;
+    box-sizing: border-box;
+    overflow-y: hidden;
+}
+
+.loading::after {
+    content: ' .';
+    font-size: 3rem;
+    line-height: 1rem;
+    transform: translateY(-2rem);
+    animation: dots 1s steps(5, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% {
+        color: rgba(0,0,0,0);
+        text-shadow: 
+        .25em 0 0 rgba(0,0,0,0),
+        .5em 0 0 rgba(0,0,0,0);
+    }
+
+    40% {
+        color: white;
+        text-shadow:
+        .25em 0 0 rgba(0,0,0,0),
+        .5em 0 0 rgba(0,0,0,0);
+    }
+
+    60% {
+        text-shadow:
+        .25em 0 0 white,
+        .5em 0 0 rgba(0,0,0,0);
+    }
+
+    80%, 100% {
+        text-shadow:
+        .25em 0 0 white,
+        .5em 0 0 white;
+    }
+}
+
+.loader.inline {
+    width: 2rem;
+    height: 2rem;
+}
+
+.loader.inline::before {
+    width: 1.5rem;
+    height: 1.5rem;
+    top: calc(50% - .75rem);
+    left: calc(50% - .75rem);
+}
+
+.loader.inline::after {
+    width: 1rem;
+    height: 1rem;
+    top: calc(50% - .5rem);
+    left: calc(50% - .5rem);
+}
+
+.loader.block {
+    width: 8vmax;
+    height: 8vmax;
+}
+
+.loader.block::after {
+    width: 4vmax;
+    height: 4vmax;
+    top: calc(50% - 2vmax);
+    left: calc(50% - 2vmax);
+}
+
+.loader.block::before {
+    width: 6vmax;
+    height: 6vmax;
+    top: calc(50% - 3vmax);
+    left: calc(50% - 3vmax);
+}
+
+.loader {
+    position: relative;
+    border-right: 4px solid var(--bs-dark);
+    border-radius: 100%;
+    animation: spinRight 800ms linear infinite;
+}
+
+.loader::before, .loader::after {
+    content: '.';
+    display: block;
+    position: absolute;
+    border-left: 3px solid var(--bs-dark);
+    border-radius: 100%;
+    animation: spinLeft 800ms linear infinite;
+}
+
+.loader::after {
+    border: 0;
+    border-right: 2px solid var(--bs-dark);
+    animation: none;
+}
+
+@keyframes spinLeft {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(720deg);}
+}
+
+@keyframes spinRight {
+    from {transform: rotate(360deg);}
+    to {transform: rotate(0deg);}
+}

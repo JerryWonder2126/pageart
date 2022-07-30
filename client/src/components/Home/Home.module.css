@@ -1,0 +1,48 @@
+.ReviewCard {
+    border-top-left-radius: 25%;
+    border-bottom-right-radius: 25%;
+    padding: 3rem;
+    text-align: center;
+    color: var(--bs-dark);
+    width: 80vw;
+    margin: 0 auto;
+    max-width: 768px;
+    border-radius: 2rem !important;
+}
+
+.ReviewCard img {
+    width: 2rem;
+    aspect-ratio: 1;
+}
+
+.WeDoDiv > ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.WeDoDiv > ul > li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin: 1rem;
+    transition: all 3000ms ease-in;
+}
+
+.WeDoDiv > ul > li > img {
+    transform: translateY(-0.5rem);
+}
+
+@media (max-device-width: 468px) {
+    .ReviewCard {
+        width: 100%;
+    }
+}
+
+@media (min-device-width: 768px) {
+    .WeDoDiv > ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        place-content: center;
+    }
+}

@@ -1,0 +1,52 @@
+:root {
+    --gen-height: calc(100vh - 5.5rem);
+    --transparent-dark: #212529db;
+}
+
+body {
+    background-color: var(--bs-gray-300) !important;
+    font-family: 'Dosis', sans-serif !important;
+    /* background-color: linear-gradient(45deg, var(--bs-gray-300), var(--bs-gray-900)) !important; */
+}
+
+.container, .row, .container-fluid {
+    background-color: transparent;
+}
+
+h1, h2, h3, h4, h5, h6, button, label {
+    font-family: 'Merriweather', serif;
+}
+
+p {
+    font-size: 1.1rem;
+}
+
+.text-right {
+    text-align: right !important;
+}
+ 
+.text-justify {
+    text-align: justify !important;
+}
+
+.card {
+    background-color: var(--bs-gray-200) !important;
+}
+
+.animate-enter {
+    opacity: 0.01;
+}
+
+.animate-enter.animate-enter-active {
+    opacity: 1;
+    transition: opacity 2000ms;
+}
+
+.animate-exit {
+    opacity: 0.01;
+}
+
+.animate-exit.animate-exit-active {
+    opacity: 1;
+    transition: opacity 2000ms;
+}
