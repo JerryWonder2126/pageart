@@ -15,11 +15,11 @@ const Footer = () => {
             <p>All rights reserved</p>
         </div>
         <div className={`${styles.SocialIconsDiv}`}>
-            <a href='https://whatsapp.com'><img src={emailIcon} alt='connect with ArtExhibit on whatsapp'/></a>
-            <a href='https://whatsapp.com'><img src={whatsappIcon} alt='connect with ArtExhibit on whatsapp'/></a>
-            <a href='https://whatsapp.com'><img src={messengerIcon} alt='connect with ArtExhibit on whatsapp'/></a>
-            <a href='https://whatsapp.com'><img src={twitterIcon} alt='connect with ArtExhibit on whatsapp'/></a>
-            <a href='https://whatsapp.com'><img src={instagramIcon} alt='connect with ArtExhibit on whatsapp'/></a>
+            <a href='mailto:jerrycul2001@gmail.com'><img src={emailIcon} alt='connect with ArtExhibit on whatsapp'/></a>
+            <a href='https://wa.link/b8t54g'><img src={whatsappIcon} alt='connect with ArtExhibit on whatsapp'/></a>
+            <a href='https://m.me/culext2126'><img src={messengerIcon} alt='connect with ArtExhibit on whatsapp'/></a>
+            <a href='https://www.instagram.com/culext200/'><img src={twitterIcon} alt='connect with ArtExhibit on whatsapp'/></a>
+            <a href='https://twitter.com/JosephJSJeremi1'><img src={instagramIcon} alt='connect with ArtExhibit on whatsapp'/></a>
         </div>
         <div className={styles.ActionButtons}>
           <p>Developed by:&nbsp;<a className='text-light' href='https://github.com/jerrywonder2126'>Jerry Wonder</a></p>

@@ -15,7 +15,7 @@ const Contact = () => {
             <div>
               <h5>Reach out to us via <a href="tel:+2347057570146">call</a></h5>
               <p>OR</p>
-              <a href='/messenger'>Messenger</a> <a href='whatsapp'>Whatsapp</a> <a href='mailto:jerrycul2001@gmail.com'>Mail</a>
+              <a href='https://m.me/culext2126'>Messenger</a> <a href='https://wa.link/b8t54g'>Whatsapp</a> <a href='mailto:jerrycul2001@gmail.com'>Mail</a>
             </div>
           </div>
         </Col>
