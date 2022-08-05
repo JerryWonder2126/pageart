@@ -1,16 +1,18 @@
-import {client} from '../db';
 import {IUser} from '../helpers/general.interface';
 import bcrypt from 'bcrypt';
+import {BaseModel} from './base.model';
 // const bcrypt = require('bcrypt');
 
-class Users {
-  constructor(private table = 'users') {}
+class Users extends BaseModel {
+  constructor(private table = 'users') {
+    super();
+  }
 
   async create(email: string, password: string) {
     try {
       const hashed_password = await this.hashPassword(password);
       const query = `INSERT INTO ${this.table} (email, password) VALUES ('${email}', '${hashed_password}')`;
-      const response = await client.query(query);
+      const response = await this.queryDB(query);
       return response.rows[0] as IUser;
     } catch (err) {
       console.log(err);
@@ -20,14 +22,14 @@ class Users {
 
   async exists(email: string) {
     const query = `select exists(select 1 from ${this.table} where email='${email}')`;
-    const response = await client.query(query);
+    const response = await this.queryDB(query);
     return response.rows[0].exists as boolean;
   }
 
   async get(email: string) {
     try {
       const query = `SELECT * FROM ${this.table} WHERE email='${email}'`;
-      const response = await client.query(query);
+      const response = await this.queryDB(query);
       return response.rows[0] as IUser;
     } catch {
       throw new Error(`User identified with ${email} not found.`);
@@ -66,7 +68,7 @@ class Users {
         throw Error(`User identified with ${email} not found.`);
       }
       const query = `UPDATE users SET token='${token}' WHERE email='${email}'`;
-      await client.query(query);
+      await this.queryDB(query);
     } catch (err: any) {
       throw Error(err.message);
     }
@@ -78,7 +80,7 @@ class Users {
       throw Error(`User identified with ${email} not found.`);
     }
     const query = `SELECT token FROM users WHERE email='${email}'`;
-    const response = await client.query(query);
+    const response = await this.queryDB(query);
     return (response.rows[0] as IUser).token;
   };
 }

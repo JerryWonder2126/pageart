@@ -11,7 +11,7 @@ const About = () => {
             <Col sm={12} lg={6} className=''>
               <h1  className='d-block d-lg-none text-center'>About Us</h1>
               <div className={styles.AboutImgDiv}>
-                <img src={aboutImg} alt="about sinaartz" />
+                <img src={aboutImg} alt="about artexhibit" />
               </div>
             </Col>
             <Col className={`${styles.AboutText} p-3`}>
@@ -35,7 +35,7 @@ const About = () => {
                     aliquam molestias quia sunt doloremque quis natus vero aliquid autem.
                   </p>
                 </div>
-                <h5 className='text-right'>-- SinaArtz.</h5>
+                <h5 className='text-right'>-- The CEO.</h5>
             </Col>
         </Row>
         <Row className={`${styles.Services}`}>

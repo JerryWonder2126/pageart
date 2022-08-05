@@ -1,5 +1,4 @@
 import {v4} from 'uuid';
-import {client} from '../db';
 import {IOffer, IParsedResponse, OfferKey} from '../helpers/general.interface';
 import {
   saveImageBatch,
@@ -8,11 +7,14 @@ import {
   deparseImgURL,
 } from '../services/upload/upload-image.service';
 import {handleError} from '../helpers/helpers';
+import {BaseModel} from './base.model';
 
-class OffersModel {
+class OffersModel extends BaseModel {
   IMG_URL_PREFIX: any;
   // tableName is model's table name in the database
-  constructor(public tableName: string = 'offers') {}
+  constructor(public tableName: string = 'offers') {
+    super();
+  }
 
   getOfferObject(body: any) {
     const defaults: IOffer = {
@@ -84,7 +86,7 @@ class OffersModel {
       const parsedImgURL = `{${azureResponse}}`;
       // eslint-disable-next-line prettier/prettier
       const query = `INSERT INTO ${this.tableName} (title, short_description, long_description, price, imgurl, uhash, section_hash, artist, medium, year, dimension, orientation, status) VALUES ('${offer.title}', '${offer.short_description}','${offer.long_description}', '${offer.price}', '${parsedImgURL}', '${v4()}', '${offer.section_hash}', '${offer.artist}', '${offer.medium}', '${offer.year}', '${offer.dimension}', '${offer.orientation}', '${offer.status}') RETURNING *;`;
-      const res = await client.query(query);
+      const res = await this.queryDB(query);
       response.rows = res.rows;
     } catch (err: any) {
       handleError(response, err);
@@ -105,7 +107,7 @@ class OffersModel {
     try {
       if (!section_hash) throw new Error('Section hash must be provided');
       const query = `SELECT * FROM ${this.tableName} WHERE section_hash='${section_hash}'`;
-      const res = await client.query(query);
+      const res = await this.queryDB(query);
       const rows = parseImgURL(res.rows); // Add image_url_prefix to image names in result
       // rows = this.parseOffers(rows); // Convert every null value to an empty string
       response.rows = rows;
@@ -127,7 +129,7 @@ class OffersModel {
     };
     try {
       const query = `SELECT * FROM ${this.tableName} WHERE uhash = '${offer_hash}'`;
-      const res = await client.query(query);
+      const res = await this.queryDB(query);
       response.rows = parseImgURL(res.rows);
     } catch (err: any) {
       handleError(response, err);
@@ -147,7 +149,7 @@ class OffersModel {
     };
     try {
       const query = `SELECT * FROM ${this.tableName} ORDER BY id DESC`;
-      const res = await client.query(query);
+      const res = await this.queryDB(query);
       response.rows = parseImgURL(res.rows);
       response.rows =
         response.rows.length < max_num
@@ -167,7 +169,7 @@ class OffersModel {
      */
     try {
       const query = `SELECT * FROM ${this.tableName} WHERE uhash = '${uhash}'`;
-      const res = await client.query(query);
+      const res = await this.queryDB(query);
       const offer = res.rows[0] as IOffer;
       const deletePromise: Promise<any>[] = [];
       offer.imgurl?.forEach(value =>
@@ -192,7 +194,7 @@ class OffersModel {
     try {
       await this.deleteOfferImages(uhash); // Delete offer images first, before deleting offer
       const query = `DELETE FROM ${this.tableName} WHERE uhash = '${uhash}'`;
-      const res = await client.query(query);
+      const res = await this.queryDB(query);
       if (res) {
         response.rows = [{message: 'Offer deleted successfully'}];
       }
@@ -226,7 +228,7 @@ class OffersModel {
       orientation='${offer.orientation}',
       status='${offer.status}'
       WHERE uhash = '${body.uhash}' RETURNING *`;
-      const res = await client.query(query);
+      const res = await this.queryDB(query);
       if (res) {
         response.rows = res.rows;
       }
@@ -266,7 +268,7 @@ class OffersModel {
       const query = `UPDATE ${this.tableName} SET 
       imgurl='{${imageNames}}'
       WHERE uhash = '${body.uhash}' RETURNING *`;
-      const res = await client.query(query);
+      const res = await this.queryDB(query);
       if (res) {
         response.rows = res.rows;
       }

@@ -42,7 +42,14 @@ if (DEV_MODE) {
 app.use(
   session({
     store: new (require('connect-pg-simple')(session))({
-      conString: process.env.DATABASE_URL,
+      conObject: {
+        connectionString: process.env.DATABASE_URL,
+        ssl: process.env.DEVELOPMENT_MODE
+          ? false
+          : {
+              rejectUnauthorized: false,
+            },
+      },
       createTableIfMissing: true,
     }),
     secret: [process.env.COOKIE_SECRET as string],
@@ -70,7 +77,7 @@ app.get('/', (req: express.Request, res: express.Response) => {
 
 app.use(conf.SECTIONS_BASE_ENDPOINT, protectPOST, sectionRouter); // For performing CRUD operations on sections
 
-app.use(conf.OFFERS_BASE_ENDPOINT, protectPOST, offerRouter); // For performing CRUD operations on sections
+app.use(conf.OFFERS_BASE_ENDPOINT, protectPOST, offerRouter); // For performing CRUD operations on offers
 
 app.use(conf.SECTIONS_BASE_ENDPOINT, socialRouter); // For linking up social links
 

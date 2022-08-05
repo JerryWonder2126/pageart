@@ -11,7 +11,7 @@ const Contact = () => {
       <Row className={`justify-content-center align-items-center ${styles.MainDiv}`}>
         <Col className='d-flex justify-content-center'>
           <div className={styles.SectionContainerCol}>
-            <h1>Contact SinaArtz</h1>
+            <h1>Contact Us</h1>
             <div>
               <h5>Reach out to us via <a href="tel:+2347057570146">call</a></h5>
               <p>OR</p>

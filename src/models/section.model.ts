@@ -1,5 +1,4 @@
 import {v4} from 'uuid';
-import {client} from '../db';
 import {IParsedResponse} from '../helpers/general.interface';
 import {AzureService} from '../services/azure/azure.service';
 import {
@@ -10,10 +9,13 @@ import {
   deparseImgURL,
 } from '../services/upload/upload-image.service';
 import {handleError} from '../helpers/helpers';
+import {BaseModel} from './base.model';
 
-class SectionsModel {
+class SectionsModel extends BaseModel {
   // tableName is the name of this model's table in the database
-  constructor(public tableName: string = 'sections') {}
+  constructor(public tableName: string = 'sections') {
+    super();
+  }
 
   async init() {
     /**
@@ -41,7 +43,7 @@ class SectionsModel {
     };
     try {
       const query = `SELECT * FROM ${this.tableName}`;
-      const res = await client.query(query);
+      const res = await this.queryDB(query);
       response.rows = parseImgURL(res.rows, true); // Add image_url_prefix to images name in result
     } catch (err: any) {
       handleError(response, err);
@@ -65,7 +67,7 @@ class SectionsModel {
       const query = `INSERT INTO ${
         this.tableName
       } (title, imgurl, uhash) VALUES ( '${title}', '${azureResponse}', '${v4()}') RETURNING *`;
-      const res = await client.query(query);
+      const res = await this.queryDB(query);
       response.rows = res.rows;
     } catch (err: any) {
       handleError(response, err);
@@ -86,7 +88,7 @@ class SectionsModel {
     };
     try {
       const query = `UPDATE ${this.tableName} SET title = '${title}' WHERE uhash = '${uhash}' RETURNING *`;
-      const res = await client.query(query);
+      const res = await this.queryDB(query);
       response.rows = res.rows;
     } catch (err: any) {
       handleError(response, err);
@@ -114,7 +116,7 @@ class SectionsModel {
         // If deletion was successful, then proceed
         const azureResponse = await updateSingleImage(image); // Upload image before adding to record
         const query = `UPDATE ${this.tableName} SET imgurl = '${azureResponse}' WHERE uhash = '${body.uhash}' RETURNING *`;
-        const res = await client.query(query);
+        const res = await this.queryDB(query);
         response.rows = res.rows;
       }
     } catch (err: any) {
@@ -156,7 +158,7 @@ class SectionsModel {
     };
     try {
       const query = `SELECT * FROM ${this.tableName} WHERE uhash = '${uhash}'`;
-      const res = await client.query(query);
+      const res = await this.queryDB(query);
       const imgURL = res.rows[0].imgurl;
       await deleteSingleImage(imgURL);
     } catch (err: any) {
@@ -178,7 +180,7 @@ class SectionsModel {
     try {
       await this.deleteSectionImage(uhash);
       const query = `DELETE FROM ${this.tableName} WHERE uhash = '${uhash}'`;
-      const res = await client.query(query);
+      const res = await this.queryDB(query);
       if (res) {
         response.rows = [{message: 'Section deleted successfully'}];
       }

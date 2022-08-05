@@ -1,14 +1,10 @@
-import {Client} from 'pg';
+import {Pool} from 'pg';
 
 const sslOptions = {
   rejectUnauthorized: false,
 };
 
-const client: Client = new Client({
+export const pgPool: Pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: process.env.DEVELOPMENT_MODE ? false : sslOptions,
 });
-
-client.connect().then(() => console.log('Connected'));
-
-export {client};
