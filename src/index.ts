@@ -66,7 +66,7 @@ app.use(
 
 app.set('view engine', ejs);
 app.use(express.static(path.join(conf.BASE_DIR, 'client', 'build')));
-app.use(express.static(path.join(conf.BASE_DIR, 'static')));
+// app.use(express.static(path.join(conf.BASE_DIR, 'static')));
 app.use(bodyParser.json());
 app.use(fileUpload()); // This enables file-uploads through forms
 app.use(express.urlencoded({extended: false}));

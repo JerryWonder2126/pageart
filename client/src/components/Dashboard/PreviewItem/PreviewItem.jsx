@@ -27,7 +27,7 @@ const PreviewItem = (props) => {
   </Accordion.Item>
 
   return (
-    <div className={`${styles.MainDiv} mb-5`}>
+    <div className={`mb-5`}>
       <h1 className='bg-dark text-light p-2 mt-2 mt-md-0'>Preview for {item.title}</h1>
       <Carousel controls={false} className='bg-dark' fade>
         {

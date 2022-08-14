@@ -83,6 +83,11 @@ async function init() {
    * @returns an object for connection to azure
    */
   try {
+    const containerName = process.env.CONTAINER_NAME;
+    const storageAccountName = process.env.STORAGE_ACCOUNT_NAME;
+    if (!containerName || !storageAccountName) {
+      throw new Error();
+    }
     return await new AzureService(containerName, storageAccountName);
   } catch (err) {
     throw new Error(
@@ -92,9 +97,6 @@ async function init() {
     );
   }
 }
-
-const storageAccountName = 'artwebstorage';
-const containerName = 'images';
 
 export function parseImgURL(results: any[], singleImage = false) {
   /**
