@@ -4,14 +4,11 @@ export function handleError(response: IParsedResponse, err: any) {
   /**
    * Modifies error property on response object
    */
-  //   if ('stack' in err) {
-  //     response.error = err.stack;
-  //   } else {
-  //     response.error = JSON.stringify(err);
-  //   }
-  console.log(err);
   response.error = err.stack;
 }
+
+export const getStatus = (result: IParsedResponse, intendedStatus: number) =>
+  result.error ? 404 : intendedStatus;
 
 export const parseImageList = (fileList: any) => {
   let imgFiles = [];

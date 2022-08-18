@@ -36,42 +36,6 @@ class OffersModel extends BaseModel {
     } as IOffer;
   }
 
-  // async createOffer(
-  //   title: string,
-  //   short_description: string,
-  //   long_description: string,
-  //   price: string,
-  //   images: any[],
-  //   section_hash: string,
-  //   artist: string,
-  //   medium: string,
-  //   year: number,
-  //   dimension: string,
-  //   orientation: string,
-  //   status: string
-  // ) {
-  //   /**
-  //    * Creates an offer
-  //    */
-  //   const response: IParsedResponse = {
-  //     rows: [],
-  //     error: '',
-  //   };
-  //   try {
-  //     const azureResponse = await saveImageBatch(images); // Save images first before adding to record
-  //     const parsedImgURL = `{${azureResponse}}`;
-  //     const query = `INSERT INTO ${this.tableName} (
-  //       title, short_description, long_description, price, imgurl, uhash, section_hash, artist, medium, year, dimension, orientation, status)
-  //       VALUES ('${title}', '${short_description}','${long_description}', '${price}', '${parsedImgURL}', '${v4()}', '${section_hash}', '${artist}', '${medium}', '${year}', '${dimension}', '${orientation}', '${status}') RETURNING *;`;
-  //     const res = await client.query(query);
-  //     response.rows = res.rows;
-  //   } catch (err: any) {
-  //     handleError(response, err);
-  //   }
-
-  //   return response;
-  // }
-
   async createOffer(body: any, images: any) {
     /**
      * Creates an offer

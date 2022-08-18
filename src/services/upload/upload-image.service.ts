@@ -66,7 +66,6 @@ export async function deleteSingleImage(fileName: string) {
   try {
     const azureHook = await init();
     await azureHook.deleteImageFromBlob(fileName);
-    console.log('del func');
     return true;
   } catch (err) {
     throw new Error(

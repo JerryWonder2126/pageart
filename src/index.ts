@@ -83,4 +83,6 @@ app.use(conf.SECTIONS_BASE_ENDPOINT, socialRouter); // For linking up social lin
 
 app.use(conf.API_BASE_ENDPOINT, bounceUnathenticated, authRouter); // For performing authentication
 
-app.listen(process.env.PORT || 12080);
+app.listen(process.env.PORT || 12080, () => {
+  console.log(`App started on port ${process.env.port || 12080}`);
+});

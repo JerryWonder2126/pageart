@@ -1,7 +1,7 @@
 import express, {Request, Response} from 'express';
 import SectionModel from '../models/section.model';
 import {IParsedResponse} from '../helpers/general.interface';
-import {parseImageList} from '../helpers/helpers';
+import {getStatus, parseImageList} from '../helpers/helpers';
 
 const router = express.Router();
 
@@ -10,10 +10,8 @@ router.get('/', async (req: Request, res: Response) => {
    * Fetch all sections
    */
   const result: IParsedResponse = await SectionModel.fetchSections();
-  if (result.error) {
-    res.status(404);
-  }
-  res.status(200).send(result);
+  const status = getStatus(result, 200);
+  res.status(status).send(result);
 });
 
 router.post('/', async (req: Request, res: Response) => {
@@ -23,10 +21,8 @@ router.post('/', async (req: Request, res: Response) => {
   // const imageFile = req['files'] ? req['files'].image : null;
   const imageFile = parseImageList(req.files)[0];
   const result = await SectionModel.addSection(req.body.title, imageFile);
-  if (result.error) {
-    res.status(404);
-  }
-  res.status(201).send(result);
+  const status = getStatus(result, 201);
+  res.status(status).send(result);
 });
 
 router.put('/', async (req: Request, res: Response) => {
@@ -38,10 +34,9 @@ router.put('/', async (req: Request, res: Response) => {
     req.body,
     image
   )) as IParsedResponse;
-  if (result.error) {
-    res.status(404);
-  }
-  res.status(201).send(result);
+
+  const status = getStatus(result, 200);
+  res.status(status).send(result);
 });
 
 router.delete('/', async (req: Request, res: Response) => {
@@ -51,10 +46,8 @@ router.delete('/', async (req: Request, res: Response) => {
   const result = await SectionModel.deleteSection(
     req.query.section_hash as string
   );
-  if (result.error) {
-    res.status(404);
-  }
-  res.send(result);
+  const status = getStatus(result, 200);
+  res.status(status).send(result);
 });
 
 export default router;

@@ -43,11 +43,14 @@ export class AzureService {
      * @param containerName - name of contianer (optional), if not given, connects to default container
      */
     try {
-      return containerName
-        ? await (
-            await this.connectToAzureBlobService()
-          ).getContainerClient(containerName)
-        : await this.prepareForConnection();
+      let containerClient: ContainerClient;
+      if (containerName) {
+        const blobService = await this.connectToAzureBlobService();
+        containerClient = await blobService.getContainerClient(containerName);
+      } else {
+        containerClient = await this.prepareForConnection();
+      }
+      return containerClient;
     } catch (err: any) {
       throw new Error(JSON.stringify(err));
     }
@@ -80,7 +83,8 @@ export class AzureService {
       if (!containerClient) {
         containerClient = await this.prepareForConnection();
       }
-      const fileName = file.name; //'art-page' + uuidv1();
+      const [name, extension] = file.name.split('.');
+      const fileName = `${name.replace(' ', '-')}-${uuidv1()}.${extension}`; //'art-page' + uuidv1();
       // Get a block blob client
       const blockBlobClient = await containerClient.getBlockBlobClient(
         fileName
@@ -126,7 +130,6 @@ export class AzureService {
         throw new Error(JSON.stringify(err));
       }
     }
-    console.log(response);
     return response;
   }
 }
