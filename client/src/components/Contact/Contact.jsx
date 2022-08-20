@@ -6,6 +6,9 @@ import Form from 'react-bootstrap/Form'
 
 import styles from './Contact.module.css'
 import { Button } from 'react-bootstrap'
+import callIcon from '../../assets/icons/call.png'
+import mailIcon from '../../assets/icons/mail-1.png'
+import contactImg from '../../assets/contact-1.png'
 
 const formReducer = (state, event) => {
   return {
@@ -34,10 +37,20 @@ const Contact = () => {
         <Row className={`justify-content-center align-items-center`}>
           <Col className='col-12 col-md-4'>
             <div className={styles.SectionContainerCol}>
+              {/* <img src={contactImg} alt='Contact art exhibit' className='img-fluid d-block d-md-none mb-3' /> */}
               <h1>Contact Us</h1>
               <div>
-                <h5>Reach out to us via <a href="tel:+2347057570146">call</a> or <a href='mailto:jerrycul2001@gmail.com'>mail</a></h5>
+                <h5>Reach out to us via&nbsp;
+                  <a href="tel:+2347057570146">
+                    {/* call */}
+                    <img src={callIcon} className={styles.ContactIcons} alt='call us at art exhibit' />
+                  </a> or <a href='mailto:jerrycul2001@gmail.com'>
+                    {/* mail */}
+                    <img src={mailIcon} alt='mail us at art exhibit' className={styles.ContactIcons}/>
+                  </a>
+                </h5>
               </div>
+              <img src={contactImg} alt='Contact art exhibit' className='img-fluid d-none d-md-block' />
             </div>
           </Col>
           <Col className={`${styles.ContactForm}`}>

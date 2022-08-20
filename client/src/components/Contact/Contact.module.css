@@ -53,6 +53,11 @@
     background-color: rgb(220 220 240 / 79%);
 }
 
+.ContactIcons {
+    width: 2rem;
+    aspect-ratio: 1;
+}
+
 @media (min-device-width: 768px) {
     .MainDiv {
         display: flex;
