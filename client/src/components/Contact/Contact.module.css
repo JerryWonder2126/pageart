@@ -1,31 +1,92 @@
-.SectionContainer {
-    background-color: var(--bs-dark);
+.MainDiv {
     background-image: url(../../assets/contact.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
 
-.MainDiv {
-    min-height: var(--gen-height);
+.SectionContainer {
+    max-width: 1024px!important;
+    width: 90vw!important;
+    background-color: rgb(19 30 41 / 84%);
+    height: fit-content;
+    border-radius: 20px;
 }
 
 .SectionContainerCol {
-    background-color: var(--transparent-dark);
     color: var(--bs-light);
-    background-blend-mode: soft-light;
     box-sizing: content-box;
     border-radius: 1rem;
-    box-shadow: inset 4px 4px 5px 0px var(--transparent-dark);
     text-align: center;
-    width: 100%;
-    max-width: 668px;
-    padding: 5rem 0px;
-    margin: 3rem 0;
 }
 
-@media (max-device-width: 990px) {
+.ContactForm {
+    color: rgb(15 22 29);
+    padding: 2rem;
+}
+
+.ContactForm > form > div > button {
+    background-color: rgb(220 220 240 / 79%);
+    color: rgb(15 22 29);
+    padding: 0.5rem 2rem;
+    border-radius: 20px;
+    outline: transparent;
+    border-color: transparent;
+    transition: all 200ms ease-in;
+}
+
+.ContactForm > form > div > button:hover {
+    background-color: transparent;
+    color: var(--bs-light);
+    border-color: rgb(220 220 240 / 79%);
+    transition: all 100ms ease-in;
+}
+
+.FormGroup {
+    background-color: rgb(220 220 240 / 79%);
+    border-radius: 20px;
+    margin: 1.5rem 0px;
+}
+
+.FormGroup > input, .FormGroup > textarea {
+    border-radius: 20px;
+    background-color: rgb(220 220 240 / 79%);
+}
+
+@media (min-device-width: 768px) {
+    .MainDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: var(--gen-height);
+    }
+
+    .FormGroup {
+        padding: 2rem 3rem;
+    }
+}
+
+@media (max-device-width: 767px) {
+    
     .MainDiv {
         min-height: calc(var(--gen-height) - 19rem);
-    }   
+        padding: 1rem;
+    }
+    .SectionContainer > div {
+        color: var(--bs-light); 
+        background-blend-mode: soft-light;
+    }
+
+    .SectionContainerCol {
+        padding-top: 3rem;
+        padding-bottom: unset;
+    }
+
+    .ContactForm {
+        padding-top: unset;
+    }
+
+    .FormGroup {
+        padding: 2rem 1rem;
+    }
 }

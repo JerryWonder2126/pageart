@@ -14,15 +14,15 @@ const WhatWeDo = () => {
         },
         {
           title: 'Craft and Art works',
-          text: 'we build crafts and develop art works'
+          text: 'We build crafts and develop art works'
         },
         {
           title: 'Interior decor',
-          text: 'we do interior decoration and paint walls'
+          text: 'We do interior decoration and paint walls'
         },
         {
           title: 'Miscellaneous',
-          text: 'we do even more than this. Simply go to our contact page to reach out to us on your specific need.'
+          text: 'We do even more than this. Simply go to our contact page to reach out to us on your specific need.'
         }
     ]
   return (
